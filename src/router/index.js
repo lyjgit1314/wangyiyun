@@ -7,9 +7,9 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '',
-    name: 'index',
+    // name: 'index',
     component: indexview,
-    children:[
+    children: [
       {
         path: '/',
         name: 'index',
