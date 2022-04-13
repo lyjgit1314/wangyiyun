@@ -3,7 +3,7 @@
     <div class="left">
       <div class="left_img">
         <img
-          src="@/assets/logo.png"
+          src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.jj20.com%2Fup%2Fallimg%2F4k%2Fs%2F02%2F2109242332225H9-0-lp.jpg&refer=http%3A%2F%2Fimg.jj20.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1652420738&t=3fc4c35ddb8f7454cfa9e3c6b687847d"
           width="100%"
           height="100%"
           style="border-radius: 5px;display:block;"

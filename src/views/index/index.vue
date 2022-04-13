@@ -56,7 +56,7 @@ export default {
     }
   .tabbar {
     width: 320px;
-    height: 48px;
+    height: 28px;
     // background: red;
     position: fixed;
     bottom: 0;

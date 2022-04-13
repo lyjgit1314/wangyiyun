@@ -12,7 +12,7 @@
           :key="idx"
           :class="item.path === $route.path ? 'active' : ''"
           :icon="item.icon"
-          @click="$router.replace(item.path)"
+          @click="clicktabbar(item)"
           >{{ item.title }}</van-tabbar-item
         >
       </template>
@@ -36,6 +36,12 @@ export default {
     
   },
   methods: {
+    clicktabbar(item){
+      if(item.path == this.$route.path){
+        return
+      }
+      this.$router.replace(item.path)
+    },
     //   点击切换
     clickchange(e) {
       this.active = e
@@ -50,6 +56,7 @@ export default {
   height: 100%;
   .van-tabbar-item {
     color: rgb(125, 126, 128);
+    font-size: 8px !important;
     &.active {
       color: #ee0a24 !important;
     }
