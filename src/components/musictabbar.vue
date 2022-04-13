@@ -43,6 +43,7 @@ export default {
   display: flex;
   align-items: center;
     justify-content: space-between;
+    border-top: 1px solid #dddbdc;
   .left {
     display: flex;
     align-items: center;

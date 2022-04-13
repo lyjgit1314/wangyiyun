@@ -44,19 +44,19 @@ export default {
 .content {
     width: 320px;
     height: 90vh;
-    background: #f8f8f8;
+    background: white;
     position: relative;
     .acitive{
       width: 320px;
       height: 30px;
       background: white;
       position: fixed;
-      bottom: 48px;
+      bottom: 35px;
       left: 0;
     }
   .tabbar {
     width: 320px;
-    height: 28px;
+    height: 35px;
     // background: red;
     position: fixed;
     bottom: 0;

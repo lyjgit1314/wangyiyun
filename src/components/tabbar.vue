@@ -51,12 +51,17 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.van-tabbar{
+  height: 35px !important;
+  // background: red;
+}
 .body {
   width: 100%;
   height: 100%;
   .van-tabbar-item {
     color: rgb(125, 126, 128);
     font-size: 8px !important;
+    transform:scale(.8, .8);
     &.active {
       color: #ee0a24 !important;
     }
