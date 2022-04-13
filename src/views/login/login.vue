@@ -9,7 +9,7 @@
     />
     <div class="body">
       <div class="body_logo">
-        <img src="../../assets/logo.png" alt="" />
+        <img src="../../assets/logo.png" alt="网易云" width="100%" style="border-radius: 10px;"/>
       </div>
       <div class="input">
         <div class="item">
@@ -51,12 +51,6 @@ body {
       width: 50px;
       height: 50px;
       margin: 50px auto 0;
-      img {
-        width: 100%;
-        height: 100%;
-        display: block;
-        border-radius: 10px;
-      }
     }
     .input {
       width: 250px;
@@ -73,6 +67,7 @@ body {
           border-radius: 10px;
           margin-top: 10px;
           .item_icon{
+              font-size: 20px;
               margin-left: 10px;
           }
         .inp {

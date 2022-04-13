@@ -4,6 +4,11 @@
         <router-view></router-view>
     </div>
 
+
+    <!-- 播放器 -->
+    <div class="acitive">
+      <musictabbar></musictabbar>
+    </div>
     <!-- 底部导航 -->
     <div class="tabbar">
       <tabbar></tabbar>
@@ -12,9 +17,10 @@
 </template>
 
 <script>
+import Musictabbar from '@/components/musictabbar.vue';
 import tabbar from "../../components/tabbar.vue";
 export default {
-  components: { tabbar },
+  components: { tabbar, Musictabbar },
   data() {
     return {};
   },
@@ -37,9 +43,17 @@ export default {
 <style lang="less" scoped>
 .content {
     width: 320px;
-    height: 91.2vh;
+    height: 90vh;
     background: #f8f8f8;
     position: relative;
+    .acitive{
+      width: 320px;
+      height: 30px;
+      background: white;
+      position: fixed;
+      bottom: 48px;
+      left: 0;
+    }
   .tabbar {
     width: 320px;
     height: 48px;

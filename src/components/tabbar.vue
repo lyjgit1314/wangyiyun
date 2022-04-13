@@ -27,12 +27,13 @@ export default {
       active: 0,
       tabBarData: [
         { title: '首页', path: '/', icon: 'home-o' },
-        { title: '我的', path: '/mine', icon: 'friends-o' },
+        { title: '我的音乐', path: '/mymusic', icon: 'music-o' },
+        { title: '我的', path: '/mine', icon: 'manager-o' },
       ],
     }
   },
   mounted(){
-    console.log('111',this.$route.path)
+    
   },
   methods: {
     //   点击切换

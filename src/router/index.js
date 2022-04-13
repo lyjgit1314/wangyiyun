@@ -20,11 +20,11 @@ const routes = [
         name: 'mine',
         component: () => import('../views/mine/mine'),
       },
-      // {
-      //   path: '/twolist',
-      //   name: 'twolist',
-      //   component: () => import('../views/twolist/twolist'),
-      // }
+      {
+        path: '/mymusic',
+        name: 'mymusic',
+        component: () => import('../views/mymusic/mymusic'),
+      }
     ]
   },
   {
