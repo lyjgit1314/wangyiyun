@@ -105,7 +105,7 @@ export default {
       this.jiance();
     },
     // 检测手机是否注册
-    async jiance() {
+    async jiance(isshou) {
       let res = await this.$api("/cellphone/existence/check", {
         phone: this.phone,
       });
@@ -114,8 +114,13 @@ export default {
         this.$toast("手机号已存在");
         return;
       } else {
-        // 发送验证码
-        this.getma();
+        if (isshou == 1) {
+          // 注册了
+          this.clickzhuce();
+        } else {
+          // 发送验证码
+          this.getma();
+        }
       }
     },
 
@@ -124,7 +129,7 @@ export default {
       let res = await this.$api("/captcha/sent", {
         phone: this.phone,
       });
-      await this.daojishi()
+      await this.daojishi();
     },
 
     // 倒计时开始
@@ -162,18 +167,18 @@ export default {
         this.$toast("请输入昵称");
         return false;
       }
-    // 注册了
-        this.clickzhuce()
+      // 检测手机是否注册
+      this.jiance(1);
     },
 
     // 注册传值
-    async clickzhuce(){
-        let res = await this.$api('/register/cellphone',{
-            captcha:this.yanzhnegma,
-            phone:this.phone,
-            password:this.password,
-            nickname:this.ninkname
-        });
+    async clickzhuce() {
+      let res = await this.$api("/register/cellphone", {
+        captcha: this.yanzhnegma,
+        phone: this.phone,
+        password: this.password,
+        nickname: this.ninkname,
+      });
     },
     // 返回上一页
     goback() {
