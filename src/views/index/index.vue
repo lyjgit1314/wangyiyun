@@ -44,8 +44,9 @@ export default {
 .content {
     width: 320px;
     height: 90vh;
-    background: white;
+    background: #f8f8f8;
     position: relative;
+    overflow-y: auto;
     .acitive{
       width: 320px;
       height: 30px;

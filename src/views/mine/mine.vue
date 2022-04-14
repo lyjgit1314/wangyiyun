@@ -26,7 +26,7 @@ export default {
     methods:{
       // 跳转到登录页面
       gologin(){
-        this.$router.push('/login')
+        this.$router.push('/loginindex')
       }
     }
 }
