@@ -107,12 +107,13 @@
     <div class="huati">
       <div class="huati_title">热门话题</div>
       <div class="huati_item">
-        <div class="item" v-for="(item,index) in 3" :key="index">
+        <div class="item" v-for="(item,index) in hotlist" :key="index">
           <div class="item_left">
             <div class="item_left_icon">#</div>
-            <div class="item_left_size">不登录就显示刘雨杰帅</div>
+            <div class="item_left_size" v-if="hotlist!==3">{{item.title}}</div>
+            <div class="item_left_size" v-else>不登录就显示刘雨杰帅</div>
           </div>
-          <div class="item_right">2.2万热度</div>
+          <div class="item_right">2.{{index+1}}万热度</div>
         </div>
       </div>
     </div>
@@ -129,7 +130,9 @@ export default {
       // 推荐歌单列表
       gedanlist: null,
       // 推荐歌曲
-      musiclist:null
+      musiclist:null,
+      // 热评列表
+      hotlist:3
     };
   },
   mounted() {
@@ -191,7 +194,8 @@ export default {
       let res= await this.$api("/hot/topic",{
         limit:4
       });
-      console.log('热门话题',res)
+      console.log('热门话题',res.data.hot)
+      this.hotlist = res.data.hot
     }
 
 

@@ -42,12 +42,12 @@
         </div>
         <input
           type="text"
-          placeholder="请输入密码"
+          placeholder="请输入新密码"
           class="inp"
           v-model="password"
         />
       </div>
-      <div class="login_item">
+      <!-- <div class="login_item">
         <div class="item_icon">
           <img src="@/assets/mima.png" alt="" />
         </div>
@@ -57,14 +57,14 @@
           class="inp"
           v-model="ninkname"
         />
-      </div>
+      </div> -->
     </div>
 
     <div class="bottom">
       <div class="bottom_left" @click="goback()">
         <img src="@/assets/fanhui.png" alt="" />
       </div>
-      <div class="bottom_right" @click="zhuce()">立即注册</div>
+      <div class="bottom_right" @click="zhuce()">立即修改</div>
     </div>
   </div>
 </template>
@@ -84,7 +84,7 @@ export default {
       //   密码
       password: "",
       // 昵称
-      ninkname: "",
+      //   ninkname: "",
     };
   },
   methods: {
@@ -101,28 +101,31 @@ export default {
         this.$toast("手机号格式不正确");
         return false;
       }
+
+      // 发送验证码
+      this.getma();
       // 检测手机是否注册
-      this.jiance();
+      //   this.jiance();
     },
     // 检测手机是否注册
-    async jiance(isshou) {
-      let res = await this.$api("/cellphone/existence/check", {
-        phone: this.phone,
-      });
-      console.log("检测注册", res.data.exist);
-      if (res.data.exist == 1) {
-        this.$toast("手机号已存在");
-        return;
-      } else {
-        if (isshou == 1) {
-          // 注册了
-          this.clickzhuce();
-        } else {
-          // 发送验证码
-          this.getma();
-        }
-      }
-    },
+    // async jiance(isshou) {
+    //   let res = await this.$api("/cellphone/existence/check", {
+    //     phone: this.phone,
+    //   });
+    //   console.log("检测注册", res.data.exist);
+    //   if (res.data.exist == 1) {
+    //     this.$toast("手机号已存在");
+    //     return;
+    //   } else {
+    //     if (isshou == 1) {
+    //       // 注册了
+    //       this.clickzhuce();
+    //     } else {
+    //       // 发送验证码
+    //       this.getma();
+    //     }
+    //   }
+    // },
 
     // 发送验证码
     async getma() {
@@ -145,7 +148,7 @@ export default {
       }, 1000);
     },
 
-    // 点击注册
+    // 点击修改
     zhuce() {
       if (this.phone == "") {
         this.$toast("请输入手机号");
@@ -163,33 +166,36 @@ export default {
         this.$toast("请输入密码");
         return false;
       }
-      if (this.ninkname == "") {
-        this.$toast("请输入昵称");
-        return false;
-      }
+      //   if (this.ninkname == "") {
+      //     this.$toast("请输入昵称");
+      //     return false;
+      //   }
       // 检测手机是否注册
-      this.jiance(1);
+      //   this.jiance(1);
+
+      // 修改密码
+      this.clickzhuce();
     },
 
     // 注册传值
-     async clickzhuce() {
+    async clickzhuce() {
       let res = await this.$api("/register/cellphone", {
         captcha: this.yanzhnegma,
         phone: this.phone,
         password: this.password,
-        nickname: this.ninkname,
+        // nickname: this.ninkname,
       }).catch((err) => {
         // console.log("错误打印", err.response.data);
         if (err.response.data.code == 503) {
           this.$toast(`${err.response.data.message}`);
         }
       });
-      // console.log(res.data.code);
+      console.log(res.data.code);
       var that = this;
       if (res.data.code == 200) {
-        this.$toast("登录成功");
+        this.$toast("修改成功");
         setTimeout(function () {
-          that.$router.go(-2);
+          that.$router.go(-1);
         }, 1000);
       }
     },

@@ -3,12 +3,12 @@
     <div class="top">
       <div class="one" @click="gologin()">
         <div class="one_img">
-          <img src="" alt="">
+          <img :src="userinfor.avatarUrl" alt="" v-if="userinfor">
         </div>
-        <div class="name">立即登录</div>
+        <div class="name">{{userinfor?userinfor.nickname:'立即登录'}}</div>
         <div class="one_size">
-          <div class="one_one">15关注</div>
-          <div class="one_one">2粉丝</div>
+          <div class="one_one">{{userinfor?userinfor.authStatus:'0'}}关注</div>
+          <div class="one_one">{{userinfor?userinfor.authority:'0'}}粉丝</div>
           <div class="one_one">Lv.8</div>
         </div>
       </div>
@@ -20,10 +20,23 @@
 export default {
     data(){
         return{
-
+          userinfor:null
         }
     },
+    mounted(){
+      // 获取个人信息
+      this.getuser()
+    },
     methods:{
+      // 获取个人信息
+      async getuser(){
+        let res = await this.$api('/user/account',{
+
+        })
+        // console.log('用户信息',res.data)
+        this.userinfor = res.data.profile
+      },
+
       // 跳转到登录页面
       gologin(){
         this.$router.push('/loginindex')
@@ -38,7 +51,7 @@ export default {
   .top{
     width: 280px;
     height: 100px;
-    // background: white;
+    // background: transparent;
     margin: 50px auto 0;
     // border-radius: 15px;
     .one{
@@ -50,7 +63,8 @@ export default {
     .one_img{
       width: 60px;
       height: 60px;
-      // margin: -30px auto 0;
+      background: white;
+      border-radius: 30px;
       position: absolute;
       top: -30px;
       left: 110px;

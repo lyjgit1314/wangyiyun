@@ -9,13 +9,13 @@
         <div class="item_icon">
           <img src="@/assets/phone.png" alt="" />
         </div>
-        <input type="number" placeholder="请输入手机号" />
+        <input type="number" placeholder="请输入手机号" v-model="phone"/>
       </div>
       <div class="login_item">
         <div class="item_icon">
           <img src="@/assets/mima.png" alt="" />
         </div>
-        <input type="text" placeholder="请输入密码" />
+        <input type="text" placeholder="请输入密码" v-model="password" />
       </div>
     </div>
 
@@ -23,17 +23,63 @@
         <div class="bottom_left" @click="goback()">
           <img src="@/assets/fanhui.png" alt="">
         </div>
-        <div class="bottom_right">登录</div>
+        <div class="bottom_right" @click="login()">登录</div>
     </div>
+
+    <div class="wangji" @click="goxiugai()">忘记密码？</div>
+
   </div>
 </template>
 
 <script>
 export default {
   data() {
-    return {};
+    return {
+      phone:'',
+      password:''
+    };
   },
   methods: {
+    // 点击登录
+    login(){
+      if (this.phone == "") {
+        this.$toast("请输入手机号");
+        return;
+      }
+      if (!/^1[3456789]\d{9}$/.test(this.phone)) {
+        this.$toast("手机号格式不正确");
+        return false;
+      }
+      if (this.password == "") {
+        this.$toast("请输入密码");
+        return false;
+      }
+    // 调用登录接口
+    this.setlogin()
+    },
+
+    // 调用登录接口
+    async setlogin(){
+      let res =  await this.$api('/login/cellphone',{
+        phone:this.phone,
+        password:this.password
+      })
+      console.log(res.data.message)
+      var that = this
+      if(res.data.code==502){
+        this.$toast(`${res.data.message}`);
+        return
+      }
+      if(res.data.code==200){
+        this.$toast("登录成功");
+        setTimeout(function(){that.$router.go(-2);},1000);
+      }
+    },
+
+    // 跳转到修改密码页面
+    goxiugai(){
+      this.$router.push('/wangjimima')
+    },
     goback(){
       this.$router.go(-1);
     }
@@ -123,6 +169,22 @@ export default {
       font-size: 14px;
       color: white;
     }
+  }
+  .wangji{
+    // display: inline-block;
+    width: 80px;
+    // height: 50px;
+    // background: red;
+    text-align: center;
+    font-size: 12px;
+    color: white;
+    // margin-top: 20px;
+    border-bottom: 1px solid white;
+    margin: 20px auto 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3px 0;
   }
 }
 </style>

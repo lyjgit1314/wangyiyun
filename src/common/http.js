@@ -12,10 +12,11 @@ export function request(url, params) {
     // axios拦截器
     // 请求拦截
     instance.interceptors.request.use(config => {
-        // console.log('请求拦截器');
+        // console.log('请求拦截器',config);
         return config
     }, err => {
         console.log(err);
+        errorHandle(err)
     });
 
     instance.defaults.withCredentials = true;
