@@ -25,6 +25,10 @@ import { request } from "./common/http.js";
 Vue.prototype.$api = request;
 
 
+// 在手机打印错误信息
+import Vconsole from 'vconsole';
+let vConsole = new Vconsole();
+export default vConsole
 
 
 

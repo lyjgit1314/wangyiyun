@@ -28,12 +28,13 @@ export default {
       this.getuser()
     },
     methods:{
+
       // 获取个人信息
       async getuser(){
         let res = await this.$api('/user/account',{
 
         })
-        // console.log('用户信息',res.data)
+        console.log('用户信息',res)
         this.userinfor = res.data.profile
       },
 

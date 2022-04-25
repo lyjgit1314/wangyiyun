@@ -64,7 +64,7 @@ export default {
         phone:this.phone,
         password:this.password
       })
-      console.log(res.data.message)
+      // console.log(res.data.message)
       var that = this
       if(res.data.code==502){
         this.$toast(`${res.data.message}`);
@@ -73,6 +73,7 @@ export default {
       if(res.data.code==200){
         this.$toast("登录成功");
         setTimeout(function(){that.$router.go(-2);},1000);
+        console.log('登录成功',res.data)
       }
     },
 
